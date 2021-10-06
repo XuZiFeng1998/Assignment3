@@ -200,26 +200,25 @@ public class UF_HWQUPC implements UF {
         return;
     }
 
-    public  int count(int n){
-        int res = 0;
+    public int count(int n){
+        int num_pair = 0;
         Random random = new Random();
-        int num = count;
         while(count>1){
             int p = random.nextInt(n);
             int q = random.nextInt(n);
             if(!connected(p,q)){
                 union(p,q);
-                num--;
-                res++;
             }
+            num_pair++;
         }
-        return res;
+        return num_pair;
     }
 
     public static void main(String[] args) {
-        for (int i = 1; i < 100; i++) {
+        for (int i = 2; i <= 200000; i=i*2) {
             UF_HWQUPC uh = new UF_HWQUPC(i,false);
-            System.out.println("n="+i+",number of connection is:"+ uh.count(i));
+            System.out.println("n="+i+",number of pairs is:"+ uh.count(i)+",number of connection generated is:"+(i-1));
+
         }
 
     }
